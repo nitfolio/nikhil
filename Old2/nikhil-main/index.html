@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil Kulkarni — Deputy Chief Content Editor</title>
+  <link rel="icon" type="image/jpeg" href="pictures/profile_pic.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f7f3ec;
+      --cream: #ede8df;
+      --amber: #c8873a;
+      --amber-light: #e8a55a;
+      --amber-glow: rgba(200, 135, 58, 0.15);
+      --amber-glow-strong: rgba(200, 135, 58, 0.3);
+      --text-primary: #1a1714;
+      --text-secondary: #5c5248;
+      --text-muted: #9a9088;
+      --border: rgba(90, 80, 70, 0.15);
+      --card-bg: #ffffff;
+      --nav-bg: rgba(247, 243, 236, 0.92);
+      --section-alt: #f0ebe0;
+    }
+
+    [data-theme="dark"] {
+      --ink: #f2ede5;
+      --paper: #0f0d0a;
+      --cream: #1a1714;
+      --amber: #d4945a;
+      --amber-light: #e8b070;
+      --amber-glow: rgba(212, 148, 90, 0.12);
+      --amber-glow-strong: rgba(212, 148, 90, 0.25);
+      --text-primary: #ede8df;
+      --text-secondary: #b0a898;
+      --text-muted: #706860;
+      --border: rgba(200, 180, 150, 0.12);
+      --card-bg: #161210;
+      --nav-bg: rgba(15, 13, 10, 0.92);
+      --section-alt: #130f0c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      background: transparent;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--amber);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding: 100px 5% 80px;
+      display: flex;
+      align-items: center;
+      gap: 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, var(--amber-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-text {
+      flex: 0 0 55%;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+      margin-top: 0.6rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin-top: 1.8rem;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 1s;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--amber);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--amber-glow-strong);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 1.1s;
+    }
+
+    .social-link {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover { color: var(--amber); }
+
+    .hero-photo-col {
+      flex: 0 0 38%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1;
+      opacity: 0;
+      animation: photoIn 1s ease forwards 0.5s;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: clamp(240px, 28vw, 380px);
+      aspect-ratio: 3/4;
+    }
+
+    .photo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--amber);
+      border-radius: 6px;
+      transform: translate(12px, 12px);
+      opacity: 0.4;
+    }
+
+    .photo-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: 0 0 60px var(--amber-glow-strong);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+    }
+
+    .years-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--amber);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .years-badge .num {
+      display: block;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .years-badge .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* ─── SECTION COMMON ──────────────────────────────────── */
+    section {
+      padding: 100px 5%;
+    }
+
+    section:nth-child(even) {
+      background: var(--section-alt);
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 4rem;
+    }
+
+    .section-header p {
+      margin-top: 1rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px var(--amber-glow);
+      border-color: var(--amber);
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    /* ─── ARTICLES ────────────────────────────────────────── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+      position: relative;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px var(--amber-glow);
+      border-color: var(--amber);
+    }
+
+    .article-card-header {
+      height: 160px;
+      background: var(--section-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-card-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--amber-glow) 0%, transparent 60%);
+    }
+
+    .article-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--amber);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+    }
+
+    .article-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-pub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .article-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      text-transform: uppercase;
+      transition: gap 0.2s;
+    }
+
+    .article-card:hover .article-read-more { gap: 0.7rem; }
+
+    .articles-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .articles-footer p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── EXPERIENCE ──────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 3px var(--amber-glow-strong);
+    }
+
+    .tl-header {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tl-company {
+      font-size: 0.88rem;
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    .tl-dates {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .tl-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tl-bullets li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .tl-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-size: 0.8rem;
+    }
+
+    /* ─── SKILLS ──────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-group h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--amber-glow);
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: scale(1.03);
+    }
+
+    /* ─── EDUCATION ───────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px var(--amber-glow);
+      border-color: var(--amber);
+    }
+
+    .edu-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-inst {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    .contact-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, var(--amber-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .contact-section .section-label,
+    .contact-section .section-title,
+    .contact-section p {
+      position: relative;
+    }
+
+    .contact-section p {
+      color: var(--text-secondary);
+      max-width: 450px;
+      margin: 1.2rem auto 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      padding: 2rem 5%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--paper);
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* ─── REVEAL ANIMATIONS ───────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.2s; }
+      .reveal-delay-3 { transition-delay: 0.3s; }
+      .reveal-delay-4 { transition-delay: 0.4s; }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes photoIn {
+      from { opacity: 0; transform: scale(0.95) translateX(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ─── MOBILE ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 120px;
+        gap: 3rem;
+      }
+      .hero-photo-col {
+        justify-content: center;
+        flex: none;
+        width: 100%;
+      }
+      .photo-wrapper {
+        width: 220px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .photo-wrapper::before { display: none; }
+      .years-badge { bottom: 10px; left: 10px; }
+      .hero-cta { justify-content: center; }
+      .hero-social { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">NK</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">☽</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grain"></div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Deputy Chief Content Editor · Bengaluru, India</p>
+      <h1 class="hero-name">Nikhil<br/>Kulkarni</h1>
+      <p class="hero-title">Storyteller. Editor. Science Communicator.</p>
+      <p class="hero-desc">
+        Eight years of shaping narratives at India's top Kannada digital newsrooms — from ISRO moon landings to defence airshows. Turning complex science and breaking news into stories that resonate.
+      </p>
+      <div class="hero-cta">
+        <a href="#articles" class="btn-primary">Read My Work ↓</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/nikhil-v-kulkarni-354200213/" target="_blank" class="social-link">LinkedIn</a>
+        <a href="https://kannada.hindustantimes.com/author-page/Nikhil-Kulkarni" target="_blank" class="social-link">HT Kannada</a>
+        <a href="https://vijaykarnataka.com/nikhil-kulkarni/author/479267763.cms" target="_blank" class="social-link">Vijay Karnataka</a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="photo-wrapper">
+        <img src="pictures/profile_pic.jpg" alt="Nikhil Kulkarni" class="hero-photo" />
+        <div class="years-badge">
+          <span class="num">8+</span>
+          <span class="label">Years</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Words That Make an Impact</h2>
+        <p style="margin-top:1.5rem;">
+          I'm a journalist and content editor with deep roots in Kannada digital media, having contributed to some of India's most widely read regional news platforms — Hindustan Times Kannada, Times Internet's Vijay Karnataka, and Asianet News Network.
+        </p>
+        <p>
+          My editorial focus spans science journalism — especially astronomy, space exploration, and ISRO/NASA missions — alongside high-stakes coverage of state elections, live telecasts, and defence events like Aero India 2021.
+        </p>
+        <p>
+          I bring together traditional editorial rigour with modern tools: SEO content strategy, AI-assisted editorial workflows, video content, and digital audience analytics. My work has contributed to record online traffic milestones for teams I've led.
+        </p>
+        <p>
+          Languages known: Kannada · Hindi · English
+        </p>
+      </div>
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-card">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Years in Media</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Major Newsrooms</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Stories Told</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section id="articles">
+    <div class="section-header reveal">
+      <div class="section-label">Featured Work</div>
+      <h2 class="section-title">Stories That Reached Millions</h2>
+      <p>A selection of high-impact articles spanning science, space, defence, and ground-breaking news coverage from Vijay Karnataka and beyond.</p>
+    </div>
+
+    <div class="articles-grid">
+
+      <a class="article-card reveal reveal-delay-1" href="https://vijaykarnataka.com/nikhil-kulkarni/author/479267763.cms" target="_blank">
+        <div class="article-card-header">
+          🚀
+          <span class="article-tag">Science</span>
+        </div>
+        <div class="article-body">
+          <div class="article-pub">Vijay Karnataka · Times Internet</div>
+          <div class="article-title">India's Space Odyssey: ISRO & NASA Missions Explained for Every Reader</div>
+          <div class="article-desc">
+            In-depth coverage of ISRO's landmark missions — from Chandrayaan lunar explorations to Mangalyaan — breaking down complex space science into compelling Kannada narratives that drove record digital traffic.
+          </div>
+          <span class="article-read-more">Read More →</span>
+        </div>
+      </a>
+
+      <a class="article-card reveal reveal-delay-2" href="https://vijaykarnataka.com/nikhil-kulkarni/author/479267763.cms" target="_blank">
+        <div class="article-card-header">
+          ✈️
+          <span class="article-tag">Defence</span>
+        </div>
+        <div class="article-body">
+          <div class="article-pub">Vijay Karnataka · Aero India 2021</div>
+          <div class="article-title">On the Ground at Aero India 2021: India's Defence Airshow from Inside</div>
+          <div class="article-desc">
+            On-ground special correspondent reporting from Aero India 2021, organized by India's Defence Ministry — exclusive coverage of aerospace innovations, defence contracts, and live demonstrations for Kannada readers.
+          </div>
+          <span class="article-read-more">Read More →</span>
+        </div>
+      </a>
+
+      <a class="article-card reveal reveal-delay-3" href="https://kannada.hindustantimes.com/author-page/Nikhil-Kulkarni" target="_blank">
+        <div class="article-card-header">
+          🌌
+          <span class="article-tag">Astronomy</span>
+        </div>
+        <div class="article-body">
+          <div class="article-pub">Hindustan Times Kannada</div>
+          <div class="article-title">The Universe in Kannada: Astronomy Stories That Sparked Curiosity Across Karnataka</div>
+          <div class="article-desc">
+            A series of astronomy articles covering NASA's deep-space discoveries, solar phenomena, and planetary science — interviewed Jawaharlal Nehru Planetarium Director Dr. Galagali, attended seminars by former NASA Administrator Maj. Gen. Charles F. Bolden Jr.
+          </div>
+          <span class="article-read-more">Read More →</span>
+        </div>
+      </a>
+
+      <a class="article-card reveal reveal-delay-4" href="https://vijaykarnataka.com/nikhil-kulkarni/author/479267763.cms" target="_blank">
+        <div class="article-card-header">
+          🗳️
+          <span class="article-tag">Elections</span>
+        </div>
+        <div class="article-body">
+          <div class="article-pub">Hindustan Times Kannada · HT Digital</div>
+          <div class="article-title">Karnataka Elections: Live Coverage, Analysis & Real-Time Digital Reporting</div>
+          <div class="article-desc">
+            Led editorial team coverage across multiple Karnataka state elections — managing real-time reporting, live updates, and high-traffic digital content under intense deadline pressure, garnering massive audience engagement.
+          </div>
+          <span class="article-read-more">Read More →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="articles-footer reveal">
+      <p>These tiles represent highlights from Nikhil's work. Explore his complete article archive on Vijay Karnataka and Hindustan Times Kannada.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://vijaykarnataka.com/nikhil-kulkarni/author/479267763.cms" target="_blank" class="btn-primary">View All Articles on Vijay Karnataka ↗</a>
+        <a href="https://kannada.hindustantimes.com/author-page/Nikhil-Kulkarni" target="_blank" class="btn-outline">HT Kannada Archive ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">A Decade Shaping Newsrooms</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <span class="tl-role">Deputy Chief Content Editor</span>
+          <span class="tl-company">Hindustan Times Kannada</span>
+        </div>
+        <div class="tl-dates">Jul 2022 — Apr 2023 · Bengaluru</div>
+        <ul class="tl-bullets">
+          <li>Authored science and astronomy articles covering NASA and ISRO missions, driving record digital readership.</li>
+          <li>Managed editorial team across multiple Karnataka state elections under high-pressure, multi-deadline environments.</li>
+          <li>Mentored new journalists and ensured best-practice content and marketing standards across the team.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="tl-header">
+          <span class="tl-role">Senior Content Producer</span>
+          <span class="tl-company">Times Internet (Vijay Karnataka)</span>
+        </div>
+        <div class="tl-dates">Feb 2020 — Jul 2022 · Bengaluru</div>
+        <ul class="tl-bullets">
+          <li>Special correspondent at Aero India 2021 — exclusive on-ground coverage for one of India's premier defence events.</li>
+          <li>Produced articles, video content, interactive tools, and social media content for multiple web properties.</li>
+          <li>Brainstormed audience-led story formats for both mass and niche readership through multimedia storytelling.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="tl-header">
+          <span class="tl-role">Senior Sub-Editor</span>
+          <span class="tl-company">Asianet News Network (Kannada)</span>
+        </div>
+        <div class="tl-dates">May 2018 — Feb 2020 · Bengaluru</div>
+        <ul class="tl-bullets">
+          <li>Attended seminar by Maj. Gen. (Retd) Charles F. Bolden Jr., former NASA Administrator, for special news reporting.</li>
+          <li>Conducted exclusive one-on-one interview with Jawaharlal Nehru Planetarium Director Dr. Galagali.</li>
+          <li>Specialized in SEO URL and keyword generation, improving organic discoverability across web properties.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="tl-header">
+          <span class="tl-role">Content Writer</span>
+          <span class="tl-company">Way2Online Interactive</span>
+        </div>
+        <div class="tl-dates">Jul 2017 — Dec 2017 · Hyderabad</div>
+        <ul class="tl-bullets">
+          <li>Curated short-form news for the Way2Online app, covering national and international news beats.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-4">
+        <div class="tl-header">
+          <span class="tl-role">Content Editor</span>
+          <span class="tl-company">Eenadu India (Kannada Desk)</span>
+        </div>
+        <div class="tl-dates">2015 — Jul 2016 · Hyderabad</div>
+        <ul class="tl-bullets">
+          <li>Translated English cricket articles by former India captain Kapil Dev into Kannada for regional readership.</li>
+          <li>Created varied editorial content meeting consistent publication deadlines.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <span class="tl-role">Content Editor</span>
+          <span class="tl-company">Suvarna News 24×7</span>
+        </div>
+        <div class="tl-dates">Mar 2014 — Mar 2015 · Bengaluru</div>
+        <ul class="tl-bullets">
+          <li>Covered local news beats and presented reports live on camera during broadcast telecasts.</li>
+          <li>Conducted interviews with special guests and guided team members on journalistic best practices.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Tools of the Trade</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <h3>Editorial</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Writing &amp; Editing</span>
+          <span class="skill-tag">Proofreading</span>
+          <span class="skill-tag">Fact-Checking</span>
+          <span class="skill-tag">Copy Editing</span>
+          <span class="skill-tag">Science Journalism</span>
+          <span class="skill-tag">Live Reporting</span>
+          <span class="skill-tag">Interviewing</span>
+        </div>
+      </div>
+      <div class="skill-group reveal reveal-delay-1">
+        <h3>Digital &amp; SEO</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SEO Strategy</span>
+          <span class="skill-tag">Keyword Research</span>
+          <span class="skill-tag">Content Strategy</span>
+          <span class="skill-tag">Social Media</span>
+          <span class="skill-tag">Video Content</span>
+          <span class="skill-tag">ChatGPT / AI Tools</span>
+          <span class="skill-tag">Audience Analytics</span>
+        </div>
+      </div>
+      <div class="skill-group reveal reveal-delay-2">
+        <h3>Software &amp; Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Adobe Photoshop</span>
+          <span class="skill-tag">Adobe Premiere Pro</span>
+          <span class="skill-tag">Adobe Audition</span>
+          <span class="skill-tag">Corel Video Studio</span>
+          <span class="skill-tag">Pinnacle</span>
+          <span class="skill-tag">Nudi</span>
+          <span class="skill-tag">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic Foundation</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">Master of Arts — Mass Communication &amp; Journalism</div>
+        <div class="edu-inst">Karnatak University, Dharwad</div>
+        <div class="edu-year">2008 – 2010</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-icon">📜</div>
+        <div class="edu-degree">Bachelor of Arts — Criminology</div>
+        <div class="edu-inst">Karnatak Arts College, Dharwad</div>
+        <div class="edu-year">2005 – 2007</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-icon">🏛️</div>
+        <div class="edu-degree">Teaching Assistant — Mass Communication &amp; Journalism</div>
+        <div class="edu-inst">Karnatak University Dharwad PG Centre, Haveri</div>
+        <div class="edu-year">2011 – 2013</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's Tell a Story Together</h2>
+    <p class="reveal">Whether it's a collaboration, editorial role, or just a conversation about science journalism — I'd love to hear from you.</p>
+    <div class="contact-links">
+      <a href="mailto:nikhil.vtnK86@gmail.com" class="btn-primary reveal">Get in Touch →</a>
+      <a href="https://www.linkedin.com/in/nikhil-v-kulkarni-354200213/" target="_blank" class="btn-outline reveal reveal-delay-1">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Nikhil Kulkarni</span>
+    <p>© 2026 · Deputy Chief Content Editor · Bengaluru</p>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀' : '☽';
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.textContent = next === 'dark' ? '☀' : '☽';
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + e.target.id) {
+              a.style.color = 'var(--amber)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+
+</body>
+</html>

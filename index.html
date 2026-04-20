@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil Kulkarni — Senior Digital Content Producer</title>
+  <link rel="icon" type="image/jpeg" href="pictures/profile_pic.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #1a1208;
+      --bg2:       #201608;
+      --bg3:       #261c0e;
+      --surface:   #2e2010;
+      --border:    rgba(255,220,150,0.08);
+      --accent:    #e8a020;
+      --accent2:   #f0b840;
+      --text:      #f0e8d8;
+      --muted:     #9a8870;
+      --faint:     #4a3820;
+      --nav-h:     68px;
+    }
+    [data-theme="light"] {
+      --bg:        #f7f5f0;
+      --bg2:       #ede9e0;
+      --bg3:       #ffffff;
+      --surface:   #ffffff;
+      --border:    rgba(0,0,0,0.09);
+      --text:      #1a1c26;
+      --muted:     #5a6070;
+      --faint:     #d0ccc2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #000; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(26,18,8,0.88);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    [data-theme="light"] nav.scrolled { background: rgba(247,245,240,0.88); }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--accent); letter-spacing: .5px; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); font-size: .85rem; font-weight: 500;
+      text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+      position: relative; transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -3px;
+      width: 100%; height: 1px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .cv-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--accent); color: #000;
+      padding: .38rem 1rem; border-radius: 4px;
+      font-size: .8rem; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none; text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+    .cv-btn:hover { background: var(--accent2); transform: scale(1.04); box-shadow: 0 4px 16px rgba(232,160,32,.35); }
+    .cv-btn:active { transform: scale(.97); }
+    .theme-btn {
+      background: none; border: 1px solid var(--border);
+      border-radius: 999px; padding: .35rem .75rem;
+      color: var(--muted); cursor: pointer; font-size: .8rem;
+      transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: calc(var(--nav-h) + 4rem) 5vw 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(232,160,32,.09) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 50% at 5% 80%, rgba(180,80,20,.06) 0%, transparent 70%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; z-index: 0; opacity: .025;
+      background-image: linear-gradient(var(--text) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--text) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center;
+      width: 100%; max-width: 1200px; margin: 0 auto;
+    }
+    .hero-text { max-width: 640px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900; line-height: 1.04;
+      color: var(--text); margin-bottom: .75rem;
+      animation: slideUp 0.7s ease both;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-title {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 300; color: var(--muted); letter-spacing: .02em;
+      margin-bottom: 1.5rem;
+      animation: slideUp 0.7s 0.15s ease both;
+    }
+    .hero-title strong { color: var(--text); font-weight: 500; }
+    .hero-summary {
+      font-size: .97rem; line-height: 1.75; color: var(--muted);
+      max-width: 540px; margin-bottom: 2.5rem;
+      animation: slideUp 0.7s 0.25s ease both;
+    }
+    .hero-cta-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+      animation: slideUp 0.7s 0.35s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--accent); color: #000;
+      padding: .8rem 1.8rem; border-radius: 4px;
+      font-weight: 600; font-size: .9rem; text-decoration: none;
+      transition: all 0.2s ease; letter-spacing: .03em;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: scale(1.03); box-shadow: 0 8px 28px rgba(232,160,32,.35); }
+    .btn-primary:active { transform: scale(.97); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid var(--faint); color: var(--muted);
+      padding: .8rem 1.8rem; border-radius: 4px;
+      font-weight: 500; font-size: .9rem; text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.02); }
+    .hero-links {
+      display: flex; gap: 1.25rem; margin-top: 2.5rem;
+      animation: slideUp 0.7s 0.45s ease both;
+    }
+    .hero-links a {
+      color: var(--muted); transition: color 0.2s, transform 0.2s;
+      display: flex; align-items: center;
+    }
+    .hero-links a:hover { color: var(--accent); transform: translateY(-2px); }
+    .hero-links svg { width: 20px; height: 20px; }
+    .hero-photo-col { flex-shrink: 0; animation: fadeScale 0.9s 0.1s ease both; }
+    .hero-photo-wrapper {
+      position: relative; width: 340px; height: 400px;
+    }
+    .hero-photo-wrapper::before {
+      content: ''; position: absolute;
+      top: 16px; left: 16px; right: -16px; bottom: -16px;
+      border: 2px solid var(--accent); border-radius: 6px;
+      opacity: .4; z-index: 0;
+    }
+    .hero-photo {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 6px;
+      position: relative; z-index: 1;
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    }
+    .hero-badge {
+      position: absolute; bottom: -20px; right: -24px; z-index: 2;
+      background: var(--accent); color: #000;
+      padding: .6rem 1rem; border-radius: 4px;
+      font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 5vw; }
+    section:nth-child(even) { background: var(--bg2); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--faint); max-width: 80px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.1; margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: 1.02rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.25); border-color: var(--accent); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1;
+    }
+    .stat-label { font-size: .82rem; color: var(--muted); margin-top: .35rem; line-height: 1.4; }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: .5rem; bottom: 0;
+      width: 1px; background: var(--faint);
+    }
+    .tl-item {
+      position: relative; margin-bottom: 3.5rem;
+    }
+    .tl-item::before {
+      content: ''; position: absolute; left: -2.35rem; top: .4rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--accent);
+    }
+    .tl-meta {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem;
+      margin-bottom: .4rem;
+    }
+    .tl-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--text);
+    }
+    .tl-company {
+      font-size: .85rem; font-weight: 600; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 3px;
+      padding: .1rem .5rem; letter-spacing: .04em;
+    }
+    .tl-date {
+      font-size: .8rem; color: var(--muted); margin-left: auto;
+      font-family: 'DM Mono', monospace;
+    }
+    .tl-bullets { list-style: none; margin-top: .85rem; }
+    .tl-bullets li {
+      font-size: .93rem; color: var(--muted); line-height: 1.7;
+      padding-left: 1.1rem; position: relative; margin-bottom: .4rem;
+    }
+    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: .8rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 2rem; }
+    .skill-group-title {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+      padding-bottom: .5rem; border-bottom: 1px solid var(--faint);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tag {
+      font-size: .8rem; font-weight: 500;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 3px; padding: .3rem .75rem;
+      transition: all 0.2s;
+    }
+    .tag:hover { background: var(--accent); color: #000; border-color: var(--accent); transform: scale(1.05); }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
+    .achievement-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.8rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .achievement-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: var(--accent);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+    .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.25); border-color: rgba(232,160,32,.2); }
+    .achievement-card:hover::before { transform: scaleY(1); }
+    .achievement-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .achievement-title { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: .5rem; }
+    .achievement-desc { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.8rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.2); }
+    .edu-degree { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: .3rem; }
+    .edu-field { font-size: .9rem; color: var(--accent); margin-bottom: .5rem; }
+    .edu-inst { font-size: .85rem; color: var(--muted); }
+    .edu-year { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--faint); margin-top: .5rem; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact .section-label { justify-content: center; }
+    #contact .section-label::after { display: none; }
+    .contact-sub { font-size: 1.05rem; color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75; }
+    .contact-btn-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+    .contact-social { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
+    .contact-social a { color: var(--muted); transition: color 0.2s, transform 0.2s; }
+    .contact-social a:hover { color: var(--accent); transform: translateY(-3px); }
+    .contact-social svg { width: 22px; height: 22px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem 5vw;
+      font-size: .8rem; color: var(--faint);
+    }
+    footer span { color: var(--accent); }
+
+    /* ── REVEAL ANIMATIONS ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0; transform: translateY(28px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.visible { opacity: 1; transform: none; }
+      .reveal-delay-1 { transition-delay: 0.08s; }
+      .reveal-delay-2 { transition-delay: 0.16s; }
+      .reveal-delay-3 { transition-delay: 0.24s; }
+      .reveal-delay-4 { transition-delay: 0.32s; }
+
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: none; }
+      }
+      @keyframes fadeScale {
+        from { opacity: 0; transform: scale(.94); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-col { order: -1; display: flex; justify-content: center; }
+      .hero-photo-wrapper { width: 240px; height: 280px; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hamburger { display: block; }
+      .nav-links, .nav-right { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: var(--nav-h); left: 0; right: 0;
+        background: var(--bg2); padding: 1.5rem 5vw 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-right.open { display: flex; padding: 0 5vw 1.5rem; background: var(--bg2); border-bottom: 1px solid var(--border); position: absolute; top: calc(var(--nav-h) + 14rem); left: 0; right: 0; }
+    }
+    @media (max-width: 600px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .tl-date { margin-left: 0; width: 100%; }
+      section { padding: 4rem 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">NK.</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Highlights</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right" id="nav-right">
+    <a href="docs/resume.pdf" download class="cv-btn" title="Download CV">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV
+    </a>
+    <button class="theme-btn" id="theme-toggle">☀ Light</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Senior Digital Content Producer</div>
+      <h1 class="hero-name">Nikhil<br /><span>Kulkarni</span></h1>
+      <p class="hero-title">
+        <strong>10+ Years</strong> · Editorial Leadership · Science & Space · Political Journalism
+      </p>
+      <p class="hero-summary">
+        Media professional shaping stories that matter — from ISRO launches to election nights — across the newsrooms of Times Internet, Hindustan Times, and Asianet News. Bilingual. SEO-driven. AI-augmented.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="#experience" class="btn-outline">
+          View My Work ↓
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo-wrapper">
+        <img src="pictures/profile_pic.jpg" alt="Nikhil Kulkarni" class="hero-photo" />
+        <div class="hero-badge">Bengaluru, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title reveal">The Story Behind the Byline</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a media professional with <strong>over a decade of editorial leadership</strong> across India's top digital newsrooms. My work sits at the intersection of rigorous journalism and digital strategy — making complex science accessible, making election nights comprehensible, and making every headline count.</p>
+        <p>My niche is <strong>science and space reporting</strong> — from ISRO's missions to NASA's deep-space discoveries — delivered in both English and Kannada to audiences who hunger for real insight. I launched the popular weekly series <strong>'Vishwa Kannota'</strong> (World Wonder) at Times Internet, building a loyal readership around astronomy and aerospace.</p>
+        <p>I believe great journalism is built on clarity, speed, and trust — and that <strong>AI tools, used thoughtfully</strong>, can sharpen each of those without compromising editorial integrity.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years in Digital Editorial Leadership</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Languages — English & Kannada</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Major Newsrooms Across India</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Stories Told. Deadlines Met.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career</div>
+    <h2 class="section-title reveal">Professional Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Senior Digital Content Producer</span>
+          <span class="tl-company">Times Internet</span>
+          <span class="tl-date">Dec 2024 – Present</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Produce high-volume science and astronomy content — ISRO, NASA, international missions — including the weekly series <em>'Vishwa Kannota'</em>.</li>
+          <li>Lead editorial command during major state elections, coordinating real-time, fact-checked output under peak-pressure conditions.</li>
+          <li>Onboard and mentor new team members, reducing copy correction cycles and raising content quality benchmarks.</li>
+          <li>Leverage AI tools (ChatGPT, Gemini) to optimise ideation and editorial workflows, improving overall output efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Deputy Chief Content Editor</span>
+          <span class="tl-company">Hindustan Times Kannada</span>
+          <span class="tl-date">Jul 2022 – Apr 2023</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Oversaw end-to-end editorial operations for a high-traffic Kannada digital news portal, ensuring quality and consistency across all published content.</li>
+          <li>Delivered specialised science and space journalism — particularly ISRO and NASA coverage — to a broad regional audience, growing engagement in the science vertical.</li>
+          <li>Managed and coached editorial staff across election cycles, maintaining accuracy and publishing velocity during peak news events.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Senior Content Producer</span>
+          <span class="tl-company">Times Internet</span>
+          <span class="tl-date">Feb 2020 – Jul 2022</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Credentialed Special Correspondent for Aero India 2021 (Ministry of Defence, Govt. of India) — produced in-depth coverage of this high-profile national defence expo.</li>
+          <li>Devised content strategies for diverse audience segments by analysing reader behaviour and digital consumption patterns.</li>
+          <li>Produced multi-format content — articles, videos, interactive tools — driving audience engagement and record-breaking page traffic.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Senior Sub-Editor</span>
+          <span class="tl-company">Asianet News Network (Kannada)</span>
+          <span class="tl-date">May 2018 – Feb 2020</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Conducted exclusive interview with Dr. Galagali, Director of Jawaharlal Nehru Planetarium, generating high-engagement science coverage.</li>
+          <li>Attended a private seminar hosted by Maj. Gen. (Retd) Charles F. Bolden Jr., former NASA Administrator, translating insights into authoritative reporting.</li>
+          <li>Pioneered SEO URL strategy and keyword optimisation, improving organic discoverability across published content.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Content Writer</span>
+          <span class="tl-company">Way2Online Interactive India</span>
+          <span class="tl-date">Jul 2017 – Dec 2017</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Curated and condensed national and international news for a mobile app audience without sacrificing editorial integrity or factual accuracy.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Content Editor</span>
+          <span class="tl-company">Eenadu India (Kannada Desk)</span>
+          <span class="tl-date">2015 – Jul 2016</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Translated cricket analysis articles authored by former Indian captain Kapil Dev from English to Kannada for a large regional readership.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Content Editor & On-Camera Presenter</span>
+          <span class="tl-company">Suvarna News 24X7</span>
+          <span class="tl-date">Mar 2014 – Mar 2015</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Served as on-camera presenter and field reporter for live telecasts, interviewing prominent guests.</li>
+          <li>Mentored team members on journalistic accuracy and storytelling, raising broadcast content quality.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <span class="tl-role">Teaching Assistant</span>
+          <span class="tl-company">Karnatak University Dharwad PG Centre</span>
+          <span class="tl-date">2011 – 2013</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Delivered postgraduate instruction in Mass Communication and Journalism, facilitating seminars and supporting faculty on academic coursework.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title reveal">Core Skills</h2>
+    <div class="skills-grid">
+      <div class="reveal">
+        <div class="skill-group-title">Editorial</div>
+        <div class="skill-tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Copy Editing</span>
+          <span class="tag">Proofreading</span>
+          <span class="tag">Headline Writing</span>
+          <span class="tag">SEO Journalism</span>
+          <span class="tag">Fact-Checking</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-group-title">Journalism</div>
+        <div class="skill-tags">
+          <span class="tag">Science Reporting</span>
+          <span class="tag">Space & Aerospace</span>
+          <span class="tag">Political Coverage</span>
+          <span class="tag">Election Management</span>
+          <span class="tag">Special Correspondence</span>
+          <span class="tag">Live Coverage</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="skill-group-title">Leadership</div>
+        <div class="skill-tags">
+          <span class="tag">Team Management</span>
+          <span class="tag">Editorial Mentoring</span>
+          <span class="tag">Cross-functional Collaboration</span>
+          <span class="tag">Deadline Management</span>
+          <span class="tag">Workflow Design</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="skill-group-title">AI & Digital Tools</div>
+        <div class="skill-tags">
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">CMS Platforms</span>
+          <span class="tag">SEO Keyword Strategy</span>
+          <span class="tag">Social Media Content</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-4">
+        <div class="skill-group-title">Production Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Photoshop</span>
+          <span class="tag">Adobe Premiere Pro</span>
+          <span class="tag">Adobe Audition</span>
+          <span class="tag">Corel Video Studio</span>
+          <span class="tag">MS Office</span>
+          <span class="tag">Nudi</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">English</span>
+          <span class="tag">Kannada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HIGHLIGHTS / ACHIEVEMENTS ── -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-label">Notable Highlights</div>
+    <h2 class="section-title reveal">Career Milestones</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card reveal">
+        <div class="achievement-icon">🚀</div>
+        <div class="achievement-title">Aerospace Journalism Niche</div>
+        <div class="achievement-desc">Launched the popular weekly space series <em>Vishwa Kannota</em> for Times Internet, conducting exclusive interviews including the Director of Jawaharlal Nehru Planetarium. Attended a private seminar by former NASA Administrator Maj. Gen. (Retd) Charles F. Bolden Jr.</div>
+      </div>
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">🎖️</div>
+        <div class="achievement-title">Aero India 2021 — Special Correspondent</div>
+        <div class="achievement-desc">Credentialed by the Government of India's Ministry of Defence as a Special Correspondent for Aero India 2021, producing in-depth coverage of India's premier aerospace and defence exposition.</div>
+      </div>
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-icon">📈</div>
+        <div class="achievement-title">Record-Breaking Digital Traffic</div>
+        <div class="achievement-desc">Driven record-breaking online traffic at Hindustan Times and Times Internet by innovating cross-platform content strategies and modernising editorial workflows with AI tools including ChatGPT and Gemini.</div>
+      </div>
+      <div class="achievement-card reveal reveal-delay-3">
+        <div class="achievement-icon">🗳️</div>
+        <div class="achievement-title">Election Night Editorial Command</div>
+        <div class="achievement-desc">Successfully orchestrated high-pressure, real-time editorial teams across multiple major state elections — delivering fact-checked coverage at speed without sacrificing accuracy.</div>
+      </div>
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">🏏</div>
+        <div class="achievement-title">Translating Kapil Dev</div>
+        <div class="achievement-desc">Entrusted with translating exclusive cricket analysis by former Indian captain Kapil Dev from English to Kannada, published for a massive regional readership at Eenadu India.</div>
+      </div>
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-icon">📺</div>
+        <div class="achievement-title">On-Camera Broadcast Experience</div>
+        <div class="achievement-desc">Served as an on-camera presenter both at Times Internet and Suvarna News 24X7, covering live telecasts and conducting interviews with prominent guests — a rare depth of media versatility.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">Education</div>
+    <h2 class="section-title reveal">Academic Background</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Master of Arts</div>
+        <div class="edu-field">Mass Communication & Journalism</div>
+        <div class="edu-inst">Karnatak University, Dharwad</div>
+        <div class="edu-year">2008 – 2010</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-degree">Bachelor of Arts</div>
+        <div class="edu-field">Criminology</div>
+        <div class="edu-inst">Karnatak Arts College, Dharwad</div>
+        <div class="edu-year">2005 – 2007</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-degree">Teaching Assistant</div>
+        <div class="edu-field">Postgraduate Instruction · Mass Communication & Journalism</div>
+        <div class="edu-inst">Karnatak University Dharwad PG Centre, Haveri</div>
+        <div class="edu-year">2011 – 2013</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title reveal">Get in Touch</h2>
+    <p class="contact-sub reveal">Whether it's a story pitch, a collaboration, or an editorial opportunity — I'm always open to a conversation.</p>
+    <div class="contact-btn-row reveal">
+      <a href="mailto:nikhil.vtnK86@gmail.com" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send an Email
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Nikhil Kulkarni</span> · Senior Digital Content Producer · Bengaluru, India</p>
+</footer>
+
+<script>
+  // ── NAVBAR SCROLL ──
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── THEME TOGGLE ──
+  const themeToggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  themeToggle.textContent = saved === 'dark' ? '☀ Light' : '☾ Dark';
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const navRight = document.getElementById('nav-right');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navRight.classList.toggle('open');
+  });
+
+  // ── ACTIVE NAV ──
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const activateNav = () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', activateNav);
+
+  // ── REVEAL ON SCROLL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

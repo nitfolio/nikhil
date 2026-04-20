@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Nikhil Kulkarni, Deputy Chief Content Editor and Journalist specializing in science, aerospace, and Kannada digital media.">
+<meta property="og:title" content="Nikhil Kulkarni — Content Editor & Journalist">
+<meta property="og:description" content="Deputy Chief Content Editor crafting stories that connect — from breaking news and science writing to election coverage.">
+<meta property="og:image" content="pics/profile.png">
+<meta property="og:type" content="website">
+
+<title>Nikhil Kulkarni — Content Editor & Journalist</title>
+<link rel="icon" type="image/jpeg" href="pics/profile.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --teal-pale: #ccfbf1;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --warm-dark: #2c2416;
+    --warm-mid: #5a4f3e;
+    --warm-muted: #9a8f7e;
+    --white: #ffffff;
+    --shadow-soft: 0 4px 24px rgba(44,36,22,0.08);
+    --shadow-card: 0 2px 12px rgba(44,36,22,0.07);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--warm-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,247,242,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-dark);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--warm-dark);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-brand span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--warm-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--warm-dark);
+    cursor: pointer;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 2rem 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-img-container {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+.hero-img-container img {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--teal); /* Changed from var(--white) to var(--teal) */
+    box-shadow: var(--shadow-soft);
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-pale);
+    color: var(--teal);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--warm-dark);
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--warm-mid);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.4s forwards;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(13,148,136,0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13,148,136,0.4);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--cream-dark);
+    color: var(--warm-mid);
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .hero-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.5s forwards;
+  }
+
+  .hero-links span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--warm-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--warm-mid);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .social-link:hover { color: var(--teal); }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--cream-dark);
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+
+  .hero-stat { text-align: left; }
+
+  .hero-stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: var(--warm-muted);
+    font-weight: 600;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section {
+    padding: 80px 2rem;
+  }
+
+  .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px; height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--warm-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    color: var(--warm-muted);
+    font-size: 1rem;
+    max-width: 540px;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── FEATURED WORK ─── */
+  .featured-section { background: var(--white); }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pub-card {
+    background: var(--cream);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    border: 1px solid var(--cream-dark);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pub-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--teal);
+    border-radius: 0 4px 4px 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .pub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pub-card:hover::before { opacity: 1; }
+
+  .pub-outlet {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  .pub-desc {
+    font-size: 0.88rem;
+    color: var(--warm-mid);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: gap 0.2s;
+  }
+
+  .pub-link:hover { gap: 10px; }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--warm-mid);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .highlight-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .highlight-card:hover {
+    border-color: var(--teal-pale);
+    box-shadow: var(--shadow-card);
+  }
+
+  .highlight-icon {
+    width: 40px; height: 40px;
+    background: var(--teal-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .highlight-text h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--warm-dark);
+    margin-bottom: 2px;
+  }
+
+  .highlight-text p {
+    font-size: 0.83rem;
+    color: var(--warm-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .experience-section { background: var(--white); }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), var(--teal-pale), transparent);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 6px;
+    width: 12px; height: 12px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+  }
+
+  .timeline-company {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--teal);
+    margin-top: 2px;
+  }
+
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--warm-muted);
+    background: var(--cream);
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .timeline-bullets {
+    margin-top: 0.75rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: var(--warm-mid);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .timeline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .timeline-link:hover { opacity: 1; }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--cream-dark);
+  }
+
+  .skill-group-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: var(--cream);
+    color: var(--warm-mid);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--cream-dark);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: var(--teal-pale);
+    color: var(--teal);
+    border-color: var(--teal-pale);
+  }
+
+  /* ─── EDUCATION ─── */
+  .education-section { background: var(--cream); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .edu-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    border: 1px solid var(--cream-dark);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .edu-card:hover {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-3px);
+  }
+
+  .edu-card::after {
+    content: '🎓';
+    position: absolute;
+    right: 1.25rem; top: 1.25rem;
+    font-size: 1.4rem;
+    opacity: 0.2;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .edu-institution {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-year {
+    font-size: 0.8rem;
+    color: var(--warm-muted);
+    font-weight: 600;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--warm-dark); }
+
+  .contact-section .section-label { color: var(--teal-light); }
+  .contact-section .section-label::before { background: var(--teal-light); }
+
+  .contact-section .section-title { color: var(--white); }
+
+  .contact-section .section-sub { color: rgba(255,255,255,0.55); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-item:hover {
+    background: rgba(20,184,166,0.12);
+    border-color: rgba(20,184,166,0.3);
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: rgba(13,148,136,0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-details { flex: 1; min-width: 0; }
+
+  .contact-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2px;
+  }
+
+  .contact-value {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-cta {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+
+  .contact-cta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  .contact-cta p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-teal {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-teal:hover {
+    background: var(--teal-light);
+    transform: translateY(-2px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1a1309;
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  footer a {
+    color: var(--teal-light);
+    text-decoration: none;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    
+    .menu-toggle { display: block; }
+    
+    .nav-links { 
+      display: none; 
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    
+    .nav-links.active { display: flex; }
+
+    .hero { padding: 90px 1.25rem 50px; }
+
+    .hero-inner {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    .hero-actions, .hero-links, .hero-stat-row {
+      justify-content: center;
+    }
+
+    .hero-img-container img {
+      max-width: 250px;
+    }
+
+    .hero-stat-row {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .about-grid,
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    section { padding: 60px 1.25rem; }
+  }
+
+  @media (max-width: 480px) {
+    .pub-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">Nikhil <span>Kulkarni</span></a>
+  <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-label">8+ Years in Media</div>
+      <h1>Nikhil<br><em>Kulkarni</em></h1>
+      <p class="hero-tagline">Deputy Chief Content Editor crafting stories that connect — from breaking news and science writing to election coverage, across Kannada digital media.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-links">
+        <span>Find me on</span>
+        <a class="social-link" href="https://www.linkedin.com/in/nikhil-v-kulkarni-354200213/" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="social-link" href="mailto:nikhil.vtnK86@gmail.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+      </div>
+
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-number">8+</div>
+          <div class="hero-stat-label">Years in Media</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">6</div>
+          <div class="hero-stat-label">Major Outlets</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">3</div>
+          <div class="hero-stat-label">Cities Worked In</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">∞</div>
+          <div class="hero-stat-label">Stories Told</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-img-container">
+      <img src="pics/profile.png" alt="Nikhil Kulkarni">
+    </div>
+
+  </div>
+</section>
+
+<section class="featured-section" id="work">
+  <div class="section-inner">
+    <div class="section-label">Published Work</div>
+    <h2 class="section-title">Where You Can Find My Writing</h2>
+    <p class="section-sub">From astronomy to elections — stories crafted for Kannada digital audiences across major national platforms.</p>
+
+    <div class="pub-grid">
+      <div class="pub-card fade-up">
+        <div class="pub-outlet">Hindustan Times Kannada</div>
+        <div class="pub-title">Science & Astronomy Coverage</div>
+        <p class="pub-desc">Covered NASA and ISRO missions, making complex space science accessible to Kannada readers. Managed team through multiple state elections under tight deadlines.</p>
+        <a class="pub-link" href="https://kannada.hindustantimes.com/author-page/Nikhil-Kulkarni" target="_blank">
+          View articles →
+        </a>
+      </div>
+
+      <div class="pub-card fade-up">
+        <div class="pub-outlet">Vijay Karnataka · Times Internet</div>
+        <div class="pub-title">Multi-format Digital Journalism</div>
+        <p class="pub-desc">Served as special correspondent at Aero India 2021 (Ministry of Defence). Produced articles, video content, and interactive tools for mass and niche audiences alike.</p>
+        <a class="pub-link" href="https://vijaykarnataka.com/u200c-/author/479256987.cms" target="_blank">
+          View articles →
+        </a>
+      </div>
+
+      <div class="pub-card fade-up">
+        <div class="pub-outlet">Asianet News Kannada</div>
+        <div class="pub-title">SEO-Driven News & Special Interviews</div>
+        <p class="pub-desc">Interviewed the Director of Jawaharlal Nehru Planetarium; attended a NASA seminar by former administrator Maj. Gen. Charles Bolden Jr. Specialized in SEO for digital news.</p>
+        <a class="pub-link" href="https://kannada.asianetnews.com/author/nikhil-vk/7d06288b-fbfa-5ff6-bfcf-f2ff6a2ad184" target="_blank">
+          View articles →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title" style="margin-bottom:1.25rem;">A Journalist With a Scientist's Curiosity</h2>
+        <p>I'm a Bengaluru-based content editor and journalist with over 8 years of experience across Kannada digital media. My career has taken me from live TV at Suvarna News to leading editorial teams at Hindustan Times Kannada.</p>
+        <p>I have a deep love for science journalism — translating complex topics like space missions and aerospace into compelling stories for everyday readers. I've covered state elections, attended defence ministry events, and conducted special interviews with scientists and public figures.</p>
+        <p>Whether working under deadline pressure or mentoring new writers, I believe good journalism is about clarity, accuracy, and genuine curiosity about the world.</p>
+      </div>
+      <div class="about-highlights fade-up">
+        <div class="highlight-card">
+          <div class="highlight-icon">🚀</div>
+          <div class="highlight-text">
+            <h4>Science Journalism</h4>
+            <p>Specialised in NASA, ISRO, and aerospace reporting for Kannada digital audiences.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🗳️</div>
+          <div class="highlight-text">
+            <h4>Election Coverage</h4>
+            <p>Led editorial teams through multiple Karnataka state elections with speed and accuracy.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🎓</div>
+          <div class="highlight-text">
+            <h4>Educator</h4>
+            <p>Taught Mass Communication & Journalism at Karnatak University's PG centre for 2 years.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">📡</div>
+          <div class="highlight-text">
+            <h4>Live Television</h4>
+            <p>On-camera reporting and live telecasts at Suvarna News 24X7, Bengaluru.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional Journey</h2>
+    <p class="section-sub">Eight years of storytelling across TV, print, and digital — in Bengaluru, Hyderabad, and beyond.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Deputy Chief Content Editor</div>
+            <div class="timeline-company">Hindustan Times Kannada, Bengaluru</div>
+          </div>
+          <div class="timeline-date">Jul 2022 – Apr 2023</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Wrote science and astronomy articles on NASA and ISRO missions for Kannada readers.</li>
+          <li>Produced accurate content calmly across multiple simultaneous deadlines.</li>
+          <li>Mentored team members on best practice and editorial standards.</li>
+          <li>Managed editorial team through multiple Karnataka state elections.</li>
+        </ul>
+        <a class="timeline-link" href="https://kannada.hindustantimes.com/author-page/Nikhil-Kulkarni" target="_blank">View published articles ↗</a>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Senior Content Producer</div>
+            <div class="timeline-company">Times Internet (Vijay Karnataka), Bengaluru</div>
+          </div>
+          <div class="timeline-date">Feb 2020 – Jul 2022</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Special correspondent at Aero India 2021, organised by the Ministry of Defence.</li>
+          <li>Created articles, video content, interactive tools, and social media video content.</li>
+          <li>Analysed target audiences and crafted stories to engage mass and niche readerships.</li>
+        </ul>
+        <a class="timeline-link" href="https://vijaykarnataka.com/u200c-/author/479256987.cms" target="_blank">View published articles ↗</a>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Senior Sub-Editor</div>
+            <div class="timeline-company">Asianet News Network India (Kannada), Bengaluru</div>
+          </div>
+          <div class="timeline-date">May 2018 – Feb 2020</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Attended NASA seminar by former administrator Maj. Gen. Charles F Bolden Jr.</li>
+          <li>Conducted one-on-one interview with Jawaharlal Nehru Planetarium Director Dr. Galagali.</li>
+          <li>Specialised in generating SEO URLs and keywords for optimised web reach.</li>
+        </ul>
+        <a class="timeline-link" href="https://kannada.asianetnews.com/author/nikhil-vk/7d06288b-fbfa-5ff6-bfcf-f2ff6a2ad184" target="_blank">View published articles ↗</a>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Content Writer</div>
+            <div class="timeline-company">Way2Online Interactive India Pvt Ltd, Hyderabad</div>
+          </div>
+          <div class="timeline-date">Jul 2017 – Dec 2017</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Curated short news snippets for the Way2Online app across national and international sections.</li>
+          <li>Compressed news stories efficiently without losing their core meaning.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Content Editor</div>
+            <div class="timeline-company">Eenadu India Pvt Ltd (Kannada Desk), Hyderabad</div>
+          </div>
+          <div class="timeline-date">2015 – Jul 2016</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Translated English articles by former Indian cricket captain Kapil Dev into Kannada.</li>
+          <li>Produced varied news articles across multiple topics, consistently within deadline.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Content Editor</div>
+            <div class="timeline-company">Suvarna News 24X7, Bengaluru</div>
+          </div>
+          <div class="timeline-date">Mar 2014 – Mar 2015</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>On-camera coverage of local news for live telecasts and daily news programming.</li>
+          <li>Conducted special guest interviews and guided teammates on quality journalism.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Teaching Assistant</div>
+            <div class="timeline-company">Karnatak University Dharwad PG Centre, Haveri</div>
+          </div>
+          <div class="timeline-date">2011 – 2013</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Taught Mass Communication and Journalism at the post-graduate level.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-sub">A toolkit built across newsrooms, studios, and digital platforms.</p>
+
+    <div class="skills-grid">
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Editorial</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Writing</span>
+          <span class="skill-tag">Proofreading</span>
+          <span class="skill-tag">Editing</span>
+          <span class="skill-tag">Formatting</span>
+          <span class="skill-tag">Fact-checking</span>
+          <span class="skill-tag">Copy editing</span>
+        </div>
+      </div>
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Digital & SEO</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SEO Writing</span>
+          <span class="skill-tag">Keyword Strategy</span>
+          <span class="skill-tag">Digital Publishing</span>
+          <span class="skill-tag">CMS</span>
+          <span class="skill-tag">Traffic Growth</span>
+        </div>
+      </div>
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Multimedia</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Video Editing</span>
+          <span class="skill-tag">Social Media Video</span>
+          <span class="skill-tag">Live TV Reporting</span>
+          <span class="skill-tag">Audio Production</span>
+        </div>
+      </div>
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Team Management</span>
+          <span class="skill-tag">Election Coverage</span>
+          <span class="skill-tag">Training Journalists</span>
+          <span class="skill-tag">Deadline Management</span>
+        </div>
+      </div>
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Tools & Software</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Adobe Premiere Pro</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Adobe Audition</span>
+          <span class="skill-tag">Corel Video Studio</span>
+          <span class="skill-tag">Pinnacle</span>
+          <span class="skill-tag">Cool Edit</span>
+          <span class="skill-tag">Nudi</span>
+          <span class="skill-tag">MS Office</span>
+        </div>
+      </div>
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Beats</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Science & Space</span>
+          <span class="skill-tag">Aerospace</span>
+          <span class="skill-tag">Elections</span>
+          <span class="skill-tag">National News</span>
+          <span class="skill-tag">Crime</span>
+          <span class="skill-tag">Sports</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="education-section" id="education">
+  <div class="section-inner">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic Background</h2>
+    <p class="section-sub" style="margin-bottom:2rem;">Rooted in journalism theory, shaped by years on the ground.</p>
+
+    <div class="edu-grid">
+      <div class="edu-card fade-up">
+        <div class="edu-degree">Master of Arts — Mass Communication & Journalism</div>
+        <div class="edu-institution">Karnatak University, Dharwad</div>
+        <div class="edu-year">2008 – 2010</div>
+      </div>
+      <div class="edu-card fade-up">
+        <div class="edu-degree">Bachelor of Arts — Criminology</div>
+        <div class="edu-institution">Karnatak Arts College, Dharwad</div>
+        <div class="edu-year">2005 – 2007</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">Open to editorial roles, content strategy, and freelance journalism opportunities.</p>
+
+    <div class="contact-grid">
+      <div class="contact-items">
+        <a class="contact-item" href="mailto:nikhil.vtnK86@gmail.com">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-details">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">nikhil.vtnK86@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/nikhil-v-kulkarni-354200213/" target="_blank">
+          <div class="contact-icon">🔗</div>
+          <div class="contact-details">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">nikhil-v-kulkarni</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://maps.google.com/?q=Bengaluru,+Karnataka" target="_blank">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Bengaluru, Karnataka</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact-cta">
+        <h3>"Every story deserves to be told well."</h3>
+        <p>Whether you're looking for a seasoned editor, a science writer with an eye for detail, or an editorial lead who's navigated breaking news — let's talk.</p>
+        <a class="btn-teal" href="mailto:nikhil.vtnK86@gmail.com">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Nikhil Kulkarni · Built with care · <a href="#top">Back to top ↑</a></p>
+</footer>
+
+<script>
+  // Mobile Menu Toggle Logic
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.dataset.delay || 0;
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.dataset.delay = (i % 4) * 80;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.timeline-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 60}ms`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
